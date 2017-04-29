@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using Heroes.Data.Mappings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +20,8 @@ namespace Heroes
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Mapper.Initialize(opt => { opt.AddProfile<DataMappingsProfile>(); });
         }
     }
 }
