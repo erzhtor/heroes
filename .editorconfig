@@ -1,0 +1,14 @@
+﻿[*]
+end_of_line = crlf
+charset = utf-8
+
+[*.xml]
+indent_style = space
+
+[*.cs]
+indent_style = space
+indent_size = 4
+csharp_style_var_elsewhere = true:warning
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_else = true
