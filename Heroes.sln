@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3B84DBD3-32EF-41A5-B2B7-434944CFF9ED}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes.DataAccessLayer", "Heroes.DataAccessLayer\Heroes.DataAccessLayer.csproj", "{405018DC-9830-4541-B10B-51B87AE54C88}"
