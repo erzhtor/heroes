@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes.DataAccessLayer", "Heroes.DataAccessLayer\Heroes.DataAccessLayer.csproj", "{405018DC-9830-4541-B10B-51B87AE54C88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{9CE401C1-1E2D-46EC-8717-6C1E99DA073A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CE401C1-1E2D-46EC-8717-6C1E99DA073A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CE401C1-1E2D-46EC-8717-6C1E99DA073A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{405018DC-9830-4541-B10B-51B87AE54C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405018DC-9830-4541-B10B-51B87AE54C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405018DC-9830-4541-B10B-51B87AE54C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405018DC-9830-4541-B10B-51B87AE54C88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
