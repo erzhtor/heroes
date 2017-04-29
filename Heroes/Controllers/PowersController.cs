@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Heroes.DataAccessLayer;
@@ -13,49 +14,48 @@ using Heroes.DataAccessLayer.Models;
 using Heroes.Data.Models;
 using AutoMapper.QueryableExtensions;
 using AutoMapper;
-using System.Threading.Tasks;
 
 namespace Heroes.Controllers
 {
-    public class CountriesController : ApiController
+    public class PowersController : ApiController
     {
         private EntityContext db = new EntityContext();
 
-        // GET: api/Countries
-        public IQueryable<CountryDTO> GetCountries()
+        // GET: api/Powers
+        public IQueryable<PowerDTO> GetPowers()
         {
-            return db.Countries.ProjectTo<CountryDTO>();
+            return db.Powers.ProjectTo<PowerDTO>();
         }
 
-        // GET: api/Countries/5
-        [ResponseType(typeof(CountryDTO))]
-        public async Task<IHttpActionResult> GetCountry(int id)
+        // GET: api/Powers/5
+        [ResponseType(typeof(PowerDTO))]
+        public async Task<IHttpActionResult> GetPower(int id)
         {
-            var country = await db.Countries.FindAsync(id);
-            if (country == null)
+            var power = await db.Powers.FindAsync(id);
+            if (power == null)
             {
                 return NotFound();
             }
 
-            return Ok(Mapper.Map<CountryDTO>(country));
+            return Ok(Mapper.Map<PowerDTO>(power));
         }
 
-        // PUT: api/Countries/5
+        // PUT: api/Powers/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCountry(int id, CountryDTO countryDto)
+        public async Task<IHttpActionResult> PutPower(int id, PowerDTO powerDto)
         {
-            var country = Mapper.Map<Country>(countryDto);
+            var power = Mapper.Map<Power>(powerDto);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != country.ID)
+            if (id != power.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(country).State = EntityState.Modified;
+            db.Entry(power).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +63,7 @@ namespace Heroes.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CountryExists(id))
+                if (!PowerExists(id))
                 {
                     return NotFound();
                 }
@@ -76,37 +76,36 @@ namespace Heroes.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Countries
-        [ResponseType(typeof(CountryDTO))]
-        public async Task<IHttpActionResult> PostCountry(CountryDTO countryDto)
+        // POST: api/Powers
+        [ResponseType(typeof(PowerDTO))]
+        public async Task<IHttpActionResult> PostPower(PowerDTO powerDto)
         {
-            var country = Mapper.Map<Country>(countryDto);
+            var power = Mapper.Map<Power>(powerDto);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Countries.Add(country);
+            db.Powers.Add(power);
             await db.SaveChangesAsync();
 
-            var result = Mapper.Map<CountryDTO>(country);
-            return CreatedAtRoute("DefaultApi", new { id = country.ID }, result);
+            return CreatedAtRoute("DefaultApi", new { id = power.ID }, power);
         }
 
-        // DELETE: api/Countries/5
-        [ResponseType(typeof(CountryDTO))]
-        public async Task<IHttpActionResult> DeleteCountry(int id)
+        // DELETE: api/Powers/5
+        [ResponseType(typeof(PowerDTO))]
+        public async Task<IHttpActionResult> DeletePower(int id)
         {
-            var country = await db.Countries.FindAsync(id);
-            if (country == null)
+            var power = await db.Powers.FindAsync(id);
+            if (power == null)
             {
                 return NotFound();
             }
 
-            db.Countries.Remove(country);
-            db.SaveChanges();
+            db.Powers.Remove(power);
+            await db.SaveChangesAsync();
 
-            return Ok(Mapper.Map<CountryDTO>(country));
+            return Ok(Mapper.Map<PowerDTO>(power));
         }
 
         protected override void Dispose(bool disposing)
@@ -118,9 +117,9 @@ namespace Heroes.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CountryExists(int id)
+        private bool PowerExists(int id)
         {
-            return db.Countries.Count(e => e.ID == id) > 0;
+            return db.Powers.Count(e => e.ID == id) > 0;
         }
     }
 }
