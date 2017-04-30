@@ -44,18 +44,24 @@ namespace Heroes.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutHero(int id, HeroDTO heroDto)
         {
-            var hero = Mapper.Map<Hero>(heroDto);
-            // TODO: handle powers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            var hero = Mapper.Map<Hero>(heroDto);
             if (id != hero.ID)
             {
                 return BadRequest();
             }
-
+            db.Heroes.Attach(hero);
+            db.Entry(hero).Collection(x => x.Powers).Load();
+            hero.Powers.Clear();
+            var updatedPowers = await GetPowersByIds(heroDto.PowerIDs);
+            foreach (var power in updatedPowers)
+            {
+                hero.Powers.Add(power);
+            }
             db.Entry(hero).State = EntityState.Modified;
 
             try
@@ -81,13 +87,12 @@ namespace Heroes.Controllers
         [ResponseType(typeof(HeroDTO))]
         public async Task<IHttpActionResult> PostHero(HeroDTO heroDto)
         {
-            var hero = Mapper.Map<Hero>(heroDto);
-            // TODO: handle powers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            var hero = Mapper.Map<Hero>(heroDto);
+            hero.Powers = await GetPowersByIds(heroDto.PowerIDs);
             db.Heroes.Add(hero);
             await db.SaveChangesAsync();
 
@@ -123,6 +128,18 @@ namespace Heroes.Controllers
         private bool HeroExists(int id)
         {
             return db.Heroes.Count(e => e.ID == id) > 0;
+        }
+
+        private async Task<ICollection<Power>> GetPowersByIds(List<int> powerIDs)
+        {
+            powerIDs = powerIDs ?? new List<int>();
+            return await db.Powers.Where(x => powerIDs.Contains(x.ID)).ToListAsync();
+        }
+
+        private async Task<ICollection<Power>> GetPowersByHeroID(int id)
+        {
+            var hero = await db.Heroes.FirstAsync(x => x.ID == id);
+            return hero.Powers;
         }
     }
 }
