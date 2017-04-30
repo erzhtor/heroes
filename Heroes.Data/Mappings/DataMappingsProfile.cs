@@ -22,7 +22,7 @@ namespace Heroes.Data.Mappings
                 .ForMember(x => x.CreatedAt, opt => opt.MapFrom(y => y.CreatedAt ?? DateTime.Now));
 
             CreateMap<Hero, HeroDTO>(MemberList.None)
-                .ForMember(x => x.PowerIDs, opt => opt.MapFrom(y => y.Powers.Select(p => p.ID)))
+                .ForMember(x => x.PowerIDs, opt => opt.MapFrom(y => y.Powers.Select(p => p.ID).ToList()))
                 .ReverseMap()
                 .ForMember(x => x.CreatedAt, opt => opt.MapFrom(y => y.CreatedAt ?? DateTime.Now));
         }

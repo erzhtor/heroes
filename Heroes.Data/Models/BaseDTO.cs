@@ -9,7 +9,6 @@ namespace Heroes.Data.Models
 {
     public class BaseDTO
     {
-        [Required]
         public int ID { get; set; }
 
         public DateTime? CreatedAt { get; set; }
