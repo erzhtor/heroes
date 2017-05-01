@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "typescript": "tsc",
     "webpack": "webpack --config webpack.config.js",
-    "build": "npm run webpack"
+    "webpack-watch": "webpack --watch --config webpack.config.js",
+    "build": "npm run webpack",
+    "build-watch": "npm run webpack-watch"
   },
   "keywords": [
     "vue.js",
@@ -18,7 +20,8 @@
   "author": "Erzhan Torokulov",
   "license": "MIT",
   "dependencies": {
-    "vue": "^2.3.0"
+    "vue": "^2.3.0",
+    "vue-router": "^2.5.3"
   },
   "devDependencies": {
     "ts-loader": "^2.0.3",

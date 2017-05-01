@@ -1,7 +1,27 @@
 ﻿@{
     ViewBag.Title = "Vue App Page";
 }
+
 <div id="app">
-    {{ hero.NickName }}
+    <h1>Heroes information system</h1>
+    <ul>
+        <li><router-link to="/list-heroes">List</router-link></li>
+        <li><router-link to="/create-hero">Add new hero</router-link></li>
+    </ul>
+    <router-view></router-view>
 </div>
+
+<template id="create-hero-template">
+    <div>
+        <h1>Welcome to hero creation page!!!</h1>
+        <p> {{ hero.NickName }}</p>
+        <input v-model="hero.NickName" placeholder="Edit Hero NickName"/> 
+    </div>
+</template>
+
+<template id="list-heroes-template">
+    <div>
+        <h1>Welcome to list of heroes page!!!</h1>
+    </div>
+</template>
 @Scripts.Render("~/VueApp/bundle.js")

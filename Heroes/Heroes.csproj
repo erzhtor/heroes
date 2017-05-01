@@ -296,6 +296,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="VueApp\src\app.ts" />
+    <TypeScriptCompile Include="VueApp\src\heroes\create.ts" />
+    <TypeScriptCompile Include="VueApp\src\heroes\list.ts" />
     <TypeScriptCompile Include="VueApp\src\models\hero.ts" />
   </ItemGroup>
   <ItemGroup>
