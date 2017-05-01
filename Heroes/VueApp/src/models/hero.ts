@@ -1,12 +1,12 @@
-﻿export default class Hero {
+﻿import Base from './base'
+class Hero extends Base {
     constructor(
         public NickName: string,
         public CountryId: number,
         public IsMale: boolean,
         public DateOfBirth: Date,
-        public PowerIds: number[],
-        public Id: number | null = null,
-        public CreatedAt: Date | null = null) {
-
+        public PowerIds: number[]) {
+        super()
     }
 }
+export default Hero

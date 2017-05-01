@@ -20,6 +20,8 @@
   "author": "Erzhan Torokulov",
   "license": "MIT",
   "dependencies": {
+    "jquery": "^3.2.1",
+    "vee-validate": "^2.0.0-rc.1",
     "vue": "^2.3.0",
     "vue-router": "^2.5.3"
   },

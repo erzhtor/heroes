@@ -297,7 +297,12 @@
   <ItemGroup>
     <TypeScriptCompile Include="VueApp\src\app.ts" />
     <TypeScriptCompile Include="VueApp\src\heroes\create.ts" />
+    <TypeScriptCompile Include="VueApp\src\heroes\index.ts" />
     <TypeScriptCompile Include="VueApp\src\heroes\list.ts" />
+    <TypeScriptCompile Include="VueApp\src\models\index.ts" />
+    <TypeScriptCompile Include="VueApp\src\models\power.ts" />
+    <TypeScriptCompile Include="VueApp\src\models\base.ts" />
+    <TypeScriptCompile Include="VueApp\src\models\country.ts" />
     <TypeScriptCompile Include="VueApp\src\models\hero.ts" />
   </ItemGroup>
   <ItemGroup>
