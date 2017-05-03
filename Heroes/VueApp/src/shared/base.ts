@@ -1,4 +1,4 @@
-﻿abstract class Base {
+﻿export abstract class Base {
     constructor(
         public ID: number | null = null,
         public CreatedAt: Date | null = null) {

@@ -1,49 +1,34 @@
 ﻿@{
-    ViewBag.Title = "Vue App Page";
+    ViewBag.Title = "Heroes IMS";
 }
 
 <div id="app">
-    <h1>Heroes information system</h1>
-    <ul>
-        <li><router-link to="/list-heroes">List</router-link></li>
-        <li><router-link to="/create-hero">Add new hero</router-link></li>
-    </ul>
-    <router-view></router-view>
+    <h1>Heroes Information System</h1>
+    <ul></ul>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <router-link tag="a" to="/list-heroes" class="navbar-brand">Heroes IMS</router-link>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <router-link tag="li" to="/list-heroes" active-class="active"><a>List of Heroes</a></router-link>
+                    <router-link tag="li" to="/create-hero" active-class="active"><a>Add new Hero</a></router-link>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <router-view></router-view>
+    </div>
 </div>
 
-<template id="create-hero-template">
-    <div>
-        <h1>Welcome to hero creation page!!!</h1>
-        <div class="form-group">
-            <input v-model="hero.NickName" placeholder="Hero NickName" data-rules="required|min:10" class="form-control"/>
-            <p class="text-danger" v-if="errors.has('name')">{{ errors.first('name') }}</p>
-        </div>
-        <div class="form-group">
-            <input type="checkbox"v-model="hero.IsMale">
-            <p class="text-danger" v-if="errors.has('name')">{{ errors.first('name') }}</p>
-        </div>
-        <div class="form-group">
-            <select v-model="hero.PowerIds" multiple class="form-control">
-                <option v-for="power in powers" v-bind:value="power.ID">
-                    {{ power.Name }}
-                </option>
-            </select>
-            <p class="text-danger" v-if="errors.has('name')">{{ errors.first('name') }}</p>
-        </div>
-        <div class="form-group">
-            <div v-for="country in countries">
-                <input type="radio" v-bind:value="country.ID" v-model="hero.CountryId">
-                <label>{{country.Name}}</label>
-                <br>
-            </div>
-            <span>Picked: {{ hero.CountryId }}</span>
-        </div>
-    </div>
-</template>
+@Html.Partial("_CreateHeroTemplate")
+@Html.Partial("_ListHeroesTemplate")
 
-<template id="list-heroes-template">
-    <div>
-        <h1>Welcome to list of heroes page!!!</h1>
-    </div>
-</template>
 @Scripts.Render("~/VueApp/bundle.js")

@@ -264,6 +264,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="VueApp\tsconfig.json" />
+    <Content Include="Views\Home\_CreateHeroTemplate.cshtml" />
+    <Content Include="Views\Home\_ListHeroesTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,14 +298,14 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="VueApp\src\app.ts" />
-    <TypeScriptCompile Include="VueApp\src\heroes\create.ts" />
-    <TypeScriptCompile Include="VueApp\src\heroes\index.ts" />
-    <TypeScriptCompile Include="VueApp\src\heroes\list.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\index.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\power.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\base.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\country.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\hero.ts" />
+    <TypeScriptCompile Include="VueApp\src\heroes\create-hero.component.ts" />
+    <TypeScriptCompile Include="VueApp\src\heroes\list-heroes.component.ts" />
+    <TypeScriptCompile Include="VueApp\src\shared\base.ts" />
+    <TypeScriptCompile Include="VueApp\src\shared\power.service.ts" />
+    <TypeScriptCompile Include="VueApp\src\shared\power.ts" />
+    <TypeScriptCompile Include="VueApp\src\shared\country.ts" />
+    <TypeScriptCompile Include="VueApp\src\heroes\hero.ts" />
+    <TypeScriptCompile Include="VueApp\src\shared\country.service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -344,6 +346,13 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>cd $(SolutionDir)/Heroes/VueApp &amp;&amp; npm run build</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
