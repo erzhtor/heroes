@@ -1,16 +1,12 @@
 ﻿import { Country } from './country'
 import $ from 'jquery'
+import { fetchData } from './helpers'
 
 export class CountryService {
-    constructor(public apiURL: string) {
-
+    constructor(public apiUrl: string) {
     }
 
-    public getCountries(): Country[] {
-        return [
-            new Country(1, 'KG'),
-            new Country(2, 'RU'),
-            new Country(3, 'US')
-        ]
+    public fetchCountries(): Promise<Country[]> {
+        return fetchData<Country[]>(this.apiUrl, 'GET');
     }
 }

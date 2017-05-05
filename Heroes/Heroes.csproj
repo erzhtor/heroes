@@ -301,6 +301,7 @@
     <TypeScriptCompile Include="VueApp\src\heroes\create-hero.component.ts" />
     <TypeScriptCompile Include="VueApp\src\heroes\list-heroes.component.ts" />
     <TypeScriptCompile Include="VueApp\src\shared\base.ts" />
+    <TypeScriptCompile Include="VueApp\src\shared\helpers.ts" />
     <TypeScriptCompile Include="VueApp\src\shared\power.service.ts" />
     <TypeScriptCompile Include="VueApp\src\shared\power.ts" />
     <TypeScriptCompile Include="VueApp\src\shared\country.ts" />

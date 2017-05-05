@@ -1,14 +1,12 @@
 ﻿import { Power } from './power'
+import $ from 'jquery'
+import { fetchData } from './helpers'
 
 export class PowerService {
-    constructor(public URL: string) {
+    constructor(public apiUrl: string) {
     }
 
-    getPowers(): Power[] {
-        return [
-            new Power(1, 'Strong'),
-            new Power(2, 'Smart'),
-            new Power(3, 'Can Fly')
-        ]
+    fetchPowers(): Promise<Power[]> {
+        return fetchData<Power[]>(this.apiUrl, 'GET');
     }
 }
