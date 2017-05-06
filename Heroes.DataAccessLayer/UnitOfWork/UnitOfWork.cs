@@ -20,7 +20,7 @@ namespace Heroes.DataAccessLayer.UnitOfWork
 
         public IGenericRepository<T> GetRepository<T>() where T : class
         {
-            if (repositories.Keys.Contains(typeof(T)))
+            if (!repositories.Keys.Contains(typeof(T)))
             {
                 repositories.Add(typeof(T), new GenericRepository<T>(context));
             }
