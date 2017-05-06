@@ -42,6 +42,7 @@ namespace Heroes.App_Start
             container.RegisterType<EntityContext>(new PerResolveLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerResolveLifetimeManager());
             container.RegisterType<ICountryService, CountryService>(new PerResolveLifetimeManager());
+            container.RegisterType<IPowerService, PowerService>(new PerResolveLifetimeManager());
         }
     }
 }

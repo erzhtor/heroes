@@ -44,9 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\ICountryService.cs" />
+    <Compile Include="Contracts\IPowerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\CountryService.cs" />
+    <Compile Include="Services\PowerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
