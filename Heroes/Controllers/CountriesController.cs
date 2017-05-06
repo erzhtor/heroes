@@ -1,37 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Heroes.DataAccessLayer;
-using Heroes.DataAccessLayer.Models;
 using Heroes.Data.Models;
-using AutoMapper.QueryableExtensions;
 using AutoMapper;
 using System.Threading.Tasks;
+using Heroes.BusinessLogicLayer.Contracts;
 
 namespace Heroes.Controllers
 {
     public class CountriesController : ApiController
     {
-        private EntityContext db = new EntityContext();
+        private readonly ICountryService countryService;
+
+        public CountriesController(ICountryService countryService)
+        {
+            this.countryService = countryService;
+        }
 
         // GET: api/Countries
-        public IQueryable<CountryDTO> GetCountries()
+        public IEnumerable<CountryDTO> GetCountries()
         {
-            return db.Countries.ProjectTo<CountryDTO>();
+            return countryService.GetAll();
         }
 
         // GET: api/Countries/5
         [ResponseType(typeof(CountryDTO))]
-        public async Task<IHttpActionResult> GetCountry(int id)
+        public IHttpActionResult GetCountry(int id)
         {
-            var country = await db.Countries.FindAsync(id);
+            var country = countryService.GetById(id);
             if (country == null)
             {
                 return NotFound();
@@ -42,85 +40,50 @@ namespace Heroes.Controllers
 
         // PUT: api/Countries/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCountry(int id, CountryDTO countryDto)
+        public IHttpActionResult PutCountry(int id, CountryDTO countryDto)
         {
-            var country = Mapper.Map<Country>(countryDto);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != country.ID)
+            if (id != countryDto.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(country).State = EntityState.Modified;
+            if (!countryService.CountryExists(id))
+            {
+                return NotFound();
+            }
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CountryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            countryService.Update(countryDto);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Countries
         [ResponseType(typeof(CountryDTO))]
-        public async Task<IHttpActionResult> PostCountry(CountryDTO countryDto)
+        public IHttpActionResult PostCountry(CountryDTO countryDto)
         {
-            var country = Mapper.Map<Country>(countryDto);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Countries.Add(country);
-            await db.SaveChangesAsync();
-
-            var result = Mapper.Map<CountryDTO>(country);
-            return CreatedAtRoute("DefaultApi", new { id = country.ID }, result);
+            var newCountry = countryService.Add(countryDto);
+            return CreatedAtRoute("DefaultApi", new { id = newCountry.ID }, newCountry);
         }
 
         // DELETE: api/Countries/5
         [ResponseType(typeof(CountryDTO))]
-        public async Task<IHttpActionResult> DeleteCountry(int id)
+        public IHttpActionResult DeleteCountry(int id)
         {
-            var country = await db.Countries.FindAsync(id);
-            if (country == null)
+            var deletedCountry = countryService.Delete(id);
+            if (deletedCountry == null)
             {
                 return NotFound();
             }
-
-            db.Countries.Remove(country);
-            db.SaveChanges();
-
-            return Ok(Mapper.Map<CountryDTO>(country));
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool CountryExists(int id)
-        {
-            return db.Countries.Count(e => e.ID == id) > 0;
+            return Ok(deletedCountry);
         }
     }
 }
