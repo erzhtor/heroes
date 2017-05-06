@@ -1,7 +1,7 @@
 ﻿<template id="create-hero-template">
     <div class="col-sm-8 col-sm-offset-2">
         <h3>Create new Hero</h3>
-        <form v-on:submit.preventDefault="submit">
+        <form v-on:submit.preventDefault="submitHero">
             <div class="form-group">
                 <label for="nickName">Nick Name:</label>
                 <input v-model="hero.NickName" placeholder="Hero NickName" class="form-control"/>

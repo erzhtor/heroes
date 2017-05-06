@@ -5,6 +5,7 @@ import CreateHeroComponent from './heroes/create-hero.component'
 import { Hero } from './heroes/hero'
 import { CountryService } from './shared/country.service'
 import { PowerService } from './shared/power.service'
+import { HeroService } from './heroes/hero.service'
 import { Country } from './shared/country'
 import { Power } from './shared/power'
 
@@ -18,8 +19,9 @@ const router = new VueRouter({
     ]
 })
 const apiUrl = '/api';
-const countryService = new CountryService(`${apiUrl}/countries`);
-const powerService = new PowerService(`${apiUrl}/powers`);
+const countryService = new CountryService(`${apiUrl}/countries`)
+const powerService = new PowerService(`${apiUrl}/powers`)
+const heroService = new HeroService(`${apiUrl}/heroes`)
 
 const v = new Vue({
     router,
@@ -28,7 +30,7 @@ const v = new Vue({
         this.loadData();
     },
     data: {
-        hero: new Hero('Tarzan', 4, true, '1/1/1994', [1, 2]),
+        hero: new Hero('Youkihero Somo', 2, true, '1/1/1994', [4]),
         countries: [],
         powers: [],
         apiUrl: apiUrl
@@ -52,6 +54,15 @@ const v = new Vue({
                 })
                 .catch((err) => {
                     console.log(err);
+                })
+        },
+        submitHero: function (hero: Hero) {
+            heroService.postHero(hero)
+                .then((hero: Hero) => {
+                    alert(JSON.stringify(hero))
+                })
+                .catch((err) => {
+                    alert(err)
                 })
         }
     }

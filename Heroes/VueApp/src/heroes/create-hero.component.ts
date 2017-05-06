@@ -1,5 +1,6 @@
 ﻿import Vue from 'vue/dist/vue'
 import $ from 'jquery'
+import { HeroService } from './hero.service'
 
 export default Vue.extend({
     template: '#create-hero-template',
@@ -11,7 +12,8 @@ export default Vue.extend({
         }
     },
     methods: {
-        submit: function (): void {
+        submitHero: function (): void {
+            this.$parent.submitHero(this.hero)
         }
     }
 })

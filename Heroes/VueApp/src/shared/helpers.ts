@@ -1,18 +1,21 @@
 ﻿import $ from 'jquery'
 
-function fetchData<T>(url: string, method: string = 'GET'): Promise<T> {
+function httpRequest<T>(url: string, method: string = 'GET', data: any = null): Promise<T> {
+    console.log(JSON.stringify(data));
     return new Promise<T>((resolve: any, reject: any) => {
         $.ajax({
             method: method,
             url: url,
+            contentType: 'application/json',
+            data: JSON.stringify(data),
             success: (response) => {
                 resolve(response)
             },
-            error: (err) => {
-                reject(err)
+            error: (jqXHR: any, textStatus: string, error: string) => {
+                reject(`${textStatus} - ${error}`)
             }
         })
     });
 }
 
-export { fetchData }
+export { httpRequest }

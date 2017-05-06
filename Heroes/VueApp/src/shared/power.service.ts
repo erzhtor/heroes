@@ -1,12 +1,12 @@
 ﻿import { Power } from './power'
 import $ from 'jquery'
-import { fetchData } from './helpers'
+import { httpRequest } from './helpers'
 
 export class PowerService {
     constructor(public apiUrl: string) {
     }
 
     fetchPowers(): Promise<Power[]> {
-        return fetchData<Power[]>(this.apiUrl, 'GET');
+        return httpRequest<Power[]>(this.apiUrl);
     }
 }
