@@ -39,9 +39,10 @@ namespace Heroes.BusinessLogicLayer.Services
         public CountryDTO Delete(int id)
         {
             var country = countryRepository.GetById(id);
+            var countryDto = Mapper.Map<CountryDTO>(country);
             countryRepository.Delete(country);
             unitOfWork.Save();
-            return Mapper.Map<CountryDTO>(country);
+            return countryDto;
         }
 
         public IEnumerable<CountryDTO> GetAll(Expression<Func<Country, bool>> filter = null)
@@ -57,8 +58,8 @@ namespace Heroes.BusinessLogicLayer.Services
 
         public void Update(CountryDTO countryToUpdate)
         {
-            var country = Mapper.Map<Country>(countryToUpdate);
-            countryRepository.Update(country);
+            var country = countryRepository.GetById(countryToUpdate.ID);
+            Mapper.Map(countryToUpdate, country);
             unitOfWork.Save();
         }
     }

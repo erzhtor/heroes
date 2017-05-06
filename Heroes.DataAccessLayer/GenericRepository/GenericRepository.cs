@@ -65,10 +65,16 @@ namespace Heroes.DataAccessLayer.GenericRepository
             dbSet.AddRange(entities);
         }
 
-        public void Update(TEntity entityToInsert)
+        public void LoadCollection<TElement>(TEntity entity,
+            Expression<Func<TEntity, ICollection<TElement>>> navigationProperty) where TElement : class
         {
-            dbSet.Attach(entityToInsert);
-            context.Entry(entityToInsert).State = EntityState.Modified;
+            context.Entry(entity).Collection(navigationProperty);
+        }
+
+        public void Update(TEntity entityToUpdate)
+        {
+            dbSet.Attach(entityToUpdate);
+            context.Entry(entityToUpdate).State = EntityState.Modified;
         }
     }
 }

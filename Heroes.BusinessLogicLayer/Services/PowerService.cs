@@ -34,9 +34,10 @@ namespace Heroes.BusinessLogicLayer.Services
         public PowerDTO Delete(int id)
         {
             var power = powerRepository.GetById(id);
+            var powerDto = Mapper.Map<PowerDTO>(power);
             powerRepository.Delete(power);
             unitOfWork.Save();
-            return Mapper.Map<PowerDTO>(power);
+            return powerDto;
         }
 
         public IEnumerable<PowerDTO> GetAll(Expression<Func<Power, bool>> filter = null)
@@ -58,8 +59,8 @@ namespace Heroes.BusinessLogicLayer.Services
 
         public void Update(PowerDTO powerDto)
         {
-            var power = Mapper.Map<Power>(powerDto);
-            powerRepository.Update(power);
+            var power = powerRepository.GetById(powerDto.ID);
+            Mapper.Map(powerDto, power);
             unitOfWork.Save();
         }
     }
