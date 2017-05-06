@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Heroes.DataAccessLayer.UnitOfWork
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IGenericRepository<T> GetRepository<T>() where T : class;
         void Save();

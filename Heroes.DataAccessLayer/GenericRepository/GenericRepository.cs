@@ -35,9 +35,14 @@ namespace Heroes.DataAccessLayer.GenericRepository
             dbSet.Remove(entityToDelete);
         }
 
-        public IQueryable<TEntity> Get()
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null)
         {
-            return dbSet;
+            var query = dbSet as IQueryable<TEntity>;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+            return query;
         }
 
         public TEntity GetById(object id)

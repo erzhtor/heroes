@@ -9,7 +9,7 @@ namespace Heroes.DataAccessLayer.GenericRepository
 {
     public interface IGenericRepository<TEntity> where TEntity: class
     {
-        IQueryable<TEntity> Get();
+        IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null);
         TEntity GetById(object id);
         void Insert(TEntity entityToInsert);
         void InsertRange(IEnumerable<TEntity> entities);
