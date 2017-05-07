@@ -322,16 +322,19 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="VueApp\src\app.ts" />
-    <TypeScriptCompile Include="VueApp\src\heroes\create-hero.component.ts" />
-    <TypeScriptCompile Include="VueApp\src\heroes\hero.service.ts" />
-    <TypeScriptCompile Include="VueApp\src\heroes\list-heroes.component.ts" />
-    <TypeScriptCompile Include="VueApp\src\shared\base.ts" />
-    <TypeScriptCompile Include="VueApp\src\shared\helpers.ts" />
-    <TypeScriptCompile Include="VueApp\src\shared\power.service.ts" />
-    <TypeScriptCompile Include="VueApp\src\shared\power.ts" />
-    <TypeScriptCompile Include="VueApp\src\shared\country.ts" />
-    <TypeScriptCompile Include="VueApp\src\heroes\hero.ts" />
-    <TypeScriptCompile Include="VueApp\src\shared\country.service.ts" />
+    <TypeScriptCompile Include="VueApp\src\components\create-hero.component.ts" />
+    <TypeScriptCompile Include="VueApp\src\components\index.ts" />
+    <TypeScriptCompile Include="VueApp\src\models\index.ts" />
+    <TypeScriptCompile Include="VueApp\src\services\hero.service.ts" />
+    <TypeScriptCompile Include="VueApp\src\components\list-heroes.component.ts" />
+    <TypeScriptCompile Include="VueApp\src\models\base.ts" />
+    <TypeScriptCompile Include="VueApp\src\services\helpers.ts" />
+    <TypeScriptCompile Include="VueApp\src\services\index.ts" />
+    <TypeScriptCompile Include="VueApp\src\services\power.service.ts" />
+    <TypeScriptCompile Include="VueApp\src\models\power.ts" />
+    <TypeScriptCompile Include="VueApp\src\models\country.ts" />
+    <TypeScriptCompile Include="VueApp\src\models\hero.ts" />
+    <TypeScriptCompile Include="VueApp\src\services\country.service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -1,4 +1,4 @@
-﻿import { Country } from './country'
+﻿import { Country } from '../models/country'
 import $ from 'jquery'
 import { httpRequest } from './helpers'
 

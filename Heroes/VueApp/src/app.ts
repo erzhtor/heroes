@@ -1,13 +1,8 @@
 ﻿import Vue from 'vue/dist/vue'
 import VueRouter from 'vue-router/dist/vue-router'
-import ListHeroesComponent from './heroes/list-heroes.component'
-import CreateHeroComponent from './heroes/create-hero.component'
-import { Hero } from './heroes/hero'
-import { CountryService } from './shared/country.service'
-import { PowerService } from './shared/power.service'
-import { HeroService } from './heroes/hero.service'
-import { Country } from './shared/country'
-import { Power } from './shared/power'
+import { CreateHeroComponent, ListHeroesComponent } from './components'
+import { Hero, Country, Power } from './models'
+import { PowerService, CountryService, HeroService, httpRequest } from './services'
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -27,16 +22,17 @@ const v = new Vue({
     router,
     el: '#app',
     created: function () {
-        this.loadData();
+        this.initPowers();
+        this.initCountries();
+        this.initHeroes();
     },
     data: {
-        hero: new Hero('Youkihero Somo', 2, true, '1/1/1994', [4]),
         countries: [],
         powers: [],
         heroes: []
     },
     methods: {
-        loadData: function () {
+        initPowers: function () {
             powerService.fetchPowers()
                 .then((powers) => {
                     const tmp: Power[] = this.$data.powers;
@@ -46,15 +42,8 @@ const v = new Vue({
                 .catch((err) => {
                     console.log(err);
                 })
-            countryService.fetchCountries()
-                .then((countries) => {
-                    const tmp: Country[] = this.$data.countries;
-                    tmp.slice(0, tmp.length)
-                    tmp.push(...countries)
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
+        },
+        initHeroes: function () {
             heroService.fetchHeroes()
                 .then((heroes) => {
                     const tmp: Hero[] = this.$data.heroes;
@@ -65,10 +54,23 @@ const v = new Vue({
                     console.log(err);
                 })
         },
+        initCountries: function () {
+            countryService.fetchCountries()
+                .then((countries) => {
+                    const tmp: Country[] = this.$data.countries;
+                    tmp.slice(0, tmp.length)
+                    tmp.push(...countries)
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        },
         submitHero: function (hero: Hero) {
             heroService.postHero(hero)
                 .then((hero: Hero) => {
-                    alert(JSON.stringify(hero))
+                    this.$data.heroes.unshift(hero)
+                    router.push({ path: '/list-heroes' })
+                    alert('successfully created')
                 })
                 .catch((err) => {
                     alert(err)

@@ -1,6 +1,6 @@
-﻿import { Hero } from './hero'
+﻿import { Hero } from '../models/hero'
 import $ from 'jquery'
-import { httpRequest } from '../shared/helpers'
+import { httpRequest } from './helpers'
 
 
 export class HeroService {

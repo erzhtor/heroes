@@ -1,4 +1,4 @@
-﻿import Base from '../shared/base'
+﻿import Base from './base'
 
 export class Hero extends Base {
     constructor(

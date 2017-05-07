@@ -13,7 +13,7 @@
             </div>
             <div class="form-group">
                 <label>Date Of Birth</label>
-                <input v-model.date="hero.DateOfBirth" class="form-control">
+                <input v-model.date="hero.DateOfBirth" class="form-control" type="date">
             </div>
             <div class="checkbox">
                 <label><input type="checkbox" v-model="hero.IsMale"> IsMale</label>
@@ -32,7 +32,7 @@
                     <br>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success btn-sm">Submit</button>
+            <button type="button" v-on:click="submitHero" class="btn btn-success btn-sm">Submit</button>
         </form>
     </div>
 </template>

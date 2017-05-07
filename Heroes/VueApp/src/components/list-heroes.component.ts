@@ -1,8 +1,8 @@
 ﻿import Vue from 'vue/dist/vue'
-import { Country } from '../shared/country'
-import { Power } from '../shared/power'
+import { Country } from '../models/country'
+import { Power } from '../models/power'
 
-export default Vue.extend({
+const ListHeroesComponent = Vue.extend({
     template: '#list-heroes-template',
     data() {
         return {
@@ -31,3 +31,5 @@ export default Vue.extend({
         }
     }
 })
+
+export { ListHeroesComponent }

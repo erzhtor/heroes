@@ -1,4 +1,4 @@
-﻿import { Power } from './power'
+﻿import { Power } from '../models/power'
 import $ from 'jquery'
 import { httpRequest } from './helpers'
 
