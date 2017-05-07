@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PowerServiceTest.cs" />
     <Compile Include="Services\CountryServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
