@@ -33,10 +33,19 @@ const v = new Vue({
         hero: new Hero('Youkihero Somo', 2, true, '1/1/1994', [4]),
         countries: [],
         powers: [],
-        apiUrl: apiUrl
+        heroes: []
     },
     methods: {
         loadData: function () {
+            powerService.fetchPowers()
+                .then((powers) => {
+                    const tmp: Power[] = this.$data.powers;
+                    tmp.slice(0, tmp.length)
+                    tmp.push(...powers)
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
             countryService.fetchCountries()
                 .then((countries) => {
                     const tmp: Country[] = this.$data.countries;
@@ -46,11 +55,11 @@ const v = new Vue({
                 .catch((err) => {
                     console.log(err);
                 })
-            powerService.fetchPowers()
-                .then((powers) => {
-                    const tmp: Power[] = this.$data.powers;
+            heroService.fetchHeroes()
+                .then((heroes) => {
+                    const tmp: Hero[] = this.$data.heroes;
                     tmp.slice(0, tmp.length)
-                    tmp.push(...powers)
+                    tmp.push(...heroes)
                 })
                 .catch((err) => {
                     console.log(err);

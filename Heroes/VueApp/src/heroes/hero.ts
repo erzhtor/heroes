@@ -6,7 +6,7 @@ export class Hero extends Base {
         public CountryId: number,
         public IsMale: boolean,
         public DateOfBirth: string,
-        public PowerIds: number[]) {
+        public PowerIDs: number[]) {
         super()
     }
 }

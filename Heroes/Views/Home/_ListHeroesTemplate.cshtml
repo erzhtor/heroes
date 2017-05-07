@@ -1,5 +1,33 @@
 ﻿<template id="list-heroes-template">
     <div>
-        <h1>Welcome to list of heroes page!!!</h1>
+        <h2>List Of Heroes</h2>
+        <p>Here you can find all heroes</p>
+        <router-link tag="a" to="/create-hero" class="btn btn-sm btn-success">Add new Hero</router-link>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NickName</th>
+                    <th>Country</th>
+                    <th>Gender</th>
+                    <th>DateOfBirth</th>
+                    <th>Powers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="hero in heroes">
+                    <td>{{hero.ID}}</td>
+                    <td>{{hero.NickName}}</td>
+                    <td>{{hero.CountryID | countryByID(countries)}}</td>
+                    <td>{{hero.IsMale | genderToStr}}</td>
+                    <td>{{hero.DateOfBirth}}</td>
+                    <td>
+                        <span v-for="powerId in hero.PowerIDs" class="badge">
+                        {{powerId | powerById(powers)}} 
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
