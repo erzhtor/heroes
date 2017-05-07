@@ -33,7 +33,6 @@ namespace Heroes.BusinessLogicLayer.Tests.Services
         }
 
         [TestMethod]
-        [Owner("Erzhan Torokulov")]
         public void AddCountryTest()
         {
             //Arrange
@@ -63,10 +62,10 @@ namespace Heroes.BusinessLogicLayer.Tests.Services
                 .Returns(country).Verifiable("should call getById of GenericRepository");
 
             //Act
-            var result = countryService.CountryExists(countryId);
+            var isExists = countryService.CountryExists(countryId);
 
             //Assert
-            Assert.IsTrue(result);
+            Assert.IsTrue(isExists);
             unitOfWorkMock.Verify();
             countryRepositoryMock.Verify();
         }
@@ -80,10 +79,10 @@ namespace Heroes.BusinessLogicLayer.Tests.Services
                 .Verifiable("should call getById of GenericRepository");
 
             //Act
-            var result = countryService.CountryExists(countryId);
+            var isExists = countryService.CountryExists(countryId);
 
             //Assert
-            Assert.IsFalse(result);
+            Assert.IsFalse(isExists);
             unitOfWorkMock.Verify();
             countryRepositoryMock.Verify();
         }
@@ -121,11 +120,11 @@ namespace Heroes.BusinessLogicLayer.Tests.Services
                 .Verifiable("should request from repository");
 
             //Act
-            var result = countryService.GetCountries(null);
+            var countryDtos = countryService.GetCountries(null);
 
             //Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(result.Count(), countries.Count);
+            Assert.IsNotNull(countryDtos);
+            Assert.AreEqual(countryDtos.Count(), countries.Count);
             countryRepositoryMock.Verify();
             unitOfWorkMock.Verify();
         }
@@ -141,10 +140,10 @@ namespace Heroes.BusinessLogicLayer.Tests.Services
                 .Verifiable("should check in repository via GetById");
 
             //Act
-            var result = countryService.GetCountryById(countryId);
+            var countryDto = countryService.GetCountryById(countryId);
 
             //Assert
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(countryDto);
             unitOfWorkMock.Verify();
             countryRepositoryMock.Verify();
         }
