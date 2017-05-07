@@ -22,8 +22,8 @@
                     <td>{{hero.IsMale | genderToStr}}</td>
                     <td>{{hero.DateOfBirth}}</td>
                     <td>
-                        <span v-for="powerId in hero.PowerIDs" class="badge">
-                        {{powerId | powerById(powers)}} 
+                        <span v-for="powerID in hero.PowerIDs" class="badge">
+                        {{powerID | powerByID(powers)}} 
                         </span>
                     </td>
                 </tr>

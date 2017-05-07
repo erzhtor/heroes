@@ -11,11 +11,11 @@ namespace Heroes.BusinessLogicLayer.Contracts
 {
     public interface ICountryService
     {
-        IEnumerable<CountryDTO> GetAll(Expression<Func<Country, bool>> filter = null);
-        CountryDTO GetById(int id);
-        void Update(CountryDTO countryToUpdate);
-        CountryDTO Add(CountryDTO countryToAdd);
-        CountryDTO Delete(int id);
+        IEnumerable<CountryDTO> GetCountries(Expression<Func<Country, bool>> filter = null);
+        CountryDTO GetCountryById(int id);
+        void UpdateCountry(CountryDTO countryToUpdate);
+        CountryDTO AddCountry(CountryDTO countryToAdd);
+        CountryDTO DeleteCountry(int id);
         bool CountryExists(int id);
     }
 }

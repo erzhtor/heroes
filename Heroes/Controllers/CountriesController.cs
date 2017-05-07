@@ -22,14 +22,14 @@ namespace Heroes.Controllers
         // GET: api/Countries
         public IEnumerable<CountryDTO> GetCountries()
         {
-            return countryService.GetAll();
+            return countryService.GetCountries();
         }
 
         // GET: api/Countries/5
         [ResponseType(typeof(CountryDTO))]
         public IHttpActionResult GetCountry(int id)
         {
-            var country = countryService.GetById(id);
+            var country = countryService.GetCountryById(id);
             if (country == null)
             {
                 return NotFound();
@@ -57,7 +57,7 @@ namespace Heroes.Controllers
                 return NotFound();
             }
 
-            countryService.Update(countryDto);
+            countryService.UpdateCountry(countryDto);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -70,7 +70,7 @@ namespace Heroes.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var newCountry = countryService.Add(countryDto);
+            var newCountry = countryService.AddCountry(countryDto);
             return CreatedAtRoute("DefaultApi", new { id = newCountry.ID }, newCountry);
         }
 
@@ -78,7 +78,7 @@ namespace Heroes.Controllers
         [ResponseType(typeof(CountryDTO))]
         public IHttpActionResult DeleteCountry(int id)
         {
-            var deletedCountry = countryService.Delete(id);
+            var deletedCountry = countryService.DeleteCountry(id);
             if (deletedCountry == null)
             {
                 return NotFound();

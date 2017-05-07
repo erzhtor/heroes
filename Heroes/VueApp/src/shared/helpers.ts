@@ -1,7 +1,6 @@
 ﻿import $ from 'jquery'
 
 function httpRequest<T>(url: string, method: string = 'GET', data: any = null): Promise<T> {
-    console.log(JSON.stringify(data));
     return new Promise<T>((resolve: any, reject: any) => {
         $.ajax({
             method: method,

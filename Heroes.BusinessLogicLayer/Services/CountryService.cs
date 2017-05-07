@@ -23,7 +23,7 @@ namespace Heroes.BusinessLogicLayer.Services
             countryRepository = this.unitOfWork.GetRepository<Country>();
         }
 
-        public CountryDTO Add(CountryDTO countryToAdd)
+        public CountryDTO AddCountry(CountryDTO countryToAdd)
         {
             var country = Mapper.Map<Country>(countryToAdd);
             countryRepository.Insert(country);
@@ -36,7 +36,7 @@ namespace Heroes.BusinessLogicLayer.Services
             return countryRepository.GetById(id) != null;
         }
 
-        public CountryDTO Delete(int id)
+        public CountryDTO DeleteCountry(int id)
         {
             var country = countryRepository.GetById(id);
             var countryDto = Mapper.Map<CountryDTO>(country);
@@ -45,18 +45,18 @@ namespace Heroes.BusinessLogicLayer.Services
             return countryDto;
         }
 
-        public IEnumerable<CountryDTO> GetAll(Expression<Func<Country, bool>> filter = null)
+        public IEnumerable<CountryDTO> GetCountries(Expression<Func<Country, bool>> filter = null)
         {
             return countryRepository.Get(filter).ProjectTo<CountryDTO>();
         }
 
-        public CountryDTO GetById(int id)
+        public CountryDTO GetCountryById(int id)
         {
             var country = countryRepository.GetById(id);
             return Mapper.Map<CountryDTO>(country);
         }
 
-        public void Update(CountryDTO countryToUpdate)
+        public void UpdateCountry(CountryDTO countryToUpdate)
         {
             var country = countryRepository.GetById(countryToUpdate.ID);
             Mapper.Map(countryToUpdate, country);

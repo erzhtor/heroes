@@ -23,7 +23,7 @@ namespace Heroes.BusinessLogicLayer.Services
             powerRepository = this.unitOfWork.GetRepository<Power>();
         }
 
-        public PowerDTO Add(PowerDTO powerDto)
+        public PowerDTO AddPower(PowerDTO powerDto)
         {
             var power = Mapper.Map<Power>(powerDto);
             powerRepository.Insert(power);
@@ -31,7 +31,7 @@ namespace Heroes.BusinessLogicLayer.Services
             return Mapper.Map<PowerDTO>(power);
         }
 
-        public PowerDTO Delete(int id)
+        public PowerDTO DeleteHero(int id)
         {
             var power = powerRepository.GetById(id);
             var powerDto = Mapper.Map<PowerDTO>(power);
@@ -40,12 +40,12 @@ namespace Heroes.BusinessLogicLayer.Services
             return powerDto;
         }
 
-        public IEnumerable<PowerDTO> GetAll(Expression<Func<Power, bool>> filter = null)
+        public IEnumerable<PowerDTO> GetPowers(Expression<Func<Power, bool>> filter = null)
         {
             return powerRepository.Get(filter).ProjectTo<PowerDTO>();
         }
 
-        public PowerDTO GetById(int id)
+        public PowerDTO GetPowerById(int id)
         {
             var power = powerRepository.GetById(id);
             return Mapper.Map<PowerDTO>(power);
@@ -57,7 +57,7 @@ namespace Heroes.BusinessLogicLayer.Services
             return power != null;
         }
 
-        public void Update(PowerDTO powerDto)
+        public void UpdatePower(PowerDTO powerDto)
         {
             var power = powerRepository.GetById(powerDto.ID);
             Mapper.Map(powerDto, power);

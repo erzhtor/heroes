@@ -15,16 +15,16 @@ export default Vue.extend({
         genderToStr: function (isMale: boolean) {
             return isMale ? 'Male' : 'Female'
         },
-        countryByID: function (countryId: number, countries: Country[]) {
+        countryByID: function (countryID: number, countries: Country[]) {
             for (let country of countries) {
-                if (country.ID == countryId)
+                if (country.ID == countryID)
                     return country.Name
             }
             return 'Not Found'
         },
-        powerById: function (powerId: number, powers: Power[]) {
+        powerByID: function (powerID: number, powers: Power[]) {
             for (let power of powers) {
-                if (power.ID == powerId)
+                if (power.ID == powerID)
                     return power.Name
             }
             return 'Not Found'

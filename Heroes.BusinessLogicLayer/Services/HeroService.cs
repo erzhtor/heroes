@@ -22,7 +22,7 @@ namespace Heroes.BusinessLogicLayer.Services
             powerRepository = this.unitOfWork.GetRepository<Power>();
         }
 
-        public HeroDTO Add(HeroDTO heroDto)
+        public HeroDTO AddHero(HeroDTO heroDto)
         {
             var hero = Mapper.Map<Hero>(heroDto);
             var powerIds = heroDto?.PowerIDs ?? new List<int>();
@@ -32,7 +32,7 @@ namespace Heroes.BusinessLogicLayer.Services
             return Mapper.Map<HeroDTO>(hero);
         }
 
-        public HeroDTO Delete(int id)
+        public HeroDTO DeleteHero(int id)
         {
             var hero = heroRepository.GetById(id);
             var heroDto = Mapper.Map<HeroDTO>(hero);
@@ -41,12 +41,12 @@ namespace Heroes.BusinessLogicLayer.Services
             return heroDto;
         }
 
-        public IEnumerable<HeroDTO> GetAll()
+        public IEnumerable<HeroDTO> GetHero()
         {
             return heroRepository.Get(null).ProjectTo<HeroDTO>();
         }
 
-        public HeroDTO GetById(int id)
+        public HeroDTO GetHeroById(int id)
         {
             var hero = heroRepository.GetById(id);
             return Mapper.Map<HeroDTO>(hero);
@@ -58,7 +58,7 @@ namespace Heroes.BusinessLogicLayer.Services
             return hero != null;
         }
 
-        public void Update(HeroDTO heroDto)
+        public void UpdateHero(HeroDTO heroDto)
         {
             var hero = heroRepository.GetById(heroDto.ID);
             Mapper.Map(heroDto, hero);

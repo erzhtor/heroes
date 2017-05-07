@@ -11,11 +11,11 @@ namespace Heroes.BusinessLogicLayer.Contracts
 {
     public interface IPowerService
     {
-        IEnumerable<PowerDTO> GetAll(Expression<Func<Power, bool>> filter = null);
-        PowerDTO GetById(int id);
+        IEnumerable<PowerDTO> GetPowers(Expression<Func<Power, bool>> filter = null);
+        PowerDTO GetPowerById(int id);
         bool PowerExists(int id);
-        void Update(PowerDTO powerDto);
-        PowerDTO Add(PowerDTO powerDto);
-        PowerDTO Delete(int id);
+        void UpdatePower(PowerDTO powerDto);
+        PowerDTO AddPower(PowerDTO powerDto);
+        PowerDTO DeleteHero(int id);
     }
 }

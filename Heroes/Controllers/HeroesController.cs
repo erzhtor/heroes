@@ -20,14 +20,14 @@ namespace Heroes.Controllers
         // GET: api/Heroes
         public IEnumerable<HeroDTO> GetHeroes()
         {
-            return heroService.GetAll();
+            return heroService.GetHero();
         }
 
         // GET: api/Heroes/5
         [ResponseType(typeof(HeroDTO))]
         public IHttpActionResult GetHero(int id)
         {
-            var hero = heroService.GetById(id);
+            var hero = heroService.GetHeroById(id);
             if (hero == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace Heroes.Controllers
                 return NotFound();
             }
 
-            heroService.Update(heroDto);
+            heroService.UpdateHero(heroDto);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -67,7 +67,7 @@ namespace Heroes.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var newHero = heroService.Add(heroDto);
+            var newHero = heroService.AddHero(heroDto);
 
             return CreatedAtRoute("DefaultApi", new { id = newHero.ID }, newHero);
         }
@@ -76,7 +76,7 @@ namespace Heroes.Controllers
         [ResponseType(typeof(HeroDTO))]
         public IHttpActionResult DeleteHero(int id)
         {
-            var hero = heroService.Delete(id);
+            var hero = heroService.DeleteHero(id);
             if (hero == null)
             {
                 return NotFound();

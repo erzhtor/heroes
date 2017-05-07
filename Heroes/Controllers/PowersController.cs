@@ -20,14 +20,14 @@ namespace Heroes.Controllers
         // GET: api/Powers
         public IEnumerable<PowerDTO> GetPowers()
         {
-            return powerService.GetAll();
+            return powerService.GetPowers();
         }
 
         // GET: api/Powers/5
         [ResponseType(typeof(PowerDTO))]
         public IHttpActionResult GetPower(int id)
         {
-            var power = powerService.GetById(id);
+            var power = powerService.GetPowerById(id);
             if (power == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace Heroes.Controllers
                 return NotFound();
             }
 
-            powerService.Update(powerDto);
+            powerService.UpdatePower(powerDto);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -67,7 +67,7 @@ namespace Heroes.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var newPower = powerService.Add(powerDto);
+            var newPower = powerService.AddPower(powerDto);
             return CreatedAtRoute("DefaultApi", new { id = newPower.ID }, newPower);
         }
 
@@ -75,7 +75,7 @@ namespace Heroes.Controllers
         [ResponseType(typeof(PowerDTO))]
         public IHttpActionResult DeletePower(int id)
         {
-            var power = powerService.Delete(id);
+            var power = powerService.DeleteHero(id);
             if (power == null)
             {
                 return NotFound();
