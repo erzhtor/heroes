@@ -235,6 +235,12 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="heroes-cli\.gitignore" />
+    <Content Include="heroes-cli\index.html" />
+    <Content Include="heroes-cli\src\components\create-hero.component.html" />
+    <Content Include="heroes-cli\src\components\list-heroes.component.html" />
+    <Content Include="heroes-cli\src\components\search-hero.component.html" />
+    <Content Include="heroes-cli\webpack.config.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -259,10 +265,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="VueApp\.gitignore" />
-    <Content Include="VueApp\package.json" />
-    <Content Include="VueApp\webpack.config.js" />
     <Content Include="README.md" />
+    <Content Include="heroes-cli\src\App.vue" />
+    <Content Include="heroes-cli\.editorconfig" />
+    <Content Include="heroes-cli\package.json" />
+    <Content Include="heroes-cli\tsconfig.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -283,7 +290,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="VueApp\tsconfig.json" />
     <Content Include="Views\Home\_CreateHeroTemplate.cshtml" />
     <Content Include="Views\Home\_ListHeroesTemplate.cshtml" />
   </ItemGroup>
@@ -321,23 +327,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="VueApp\src\app.ts" />
-    <TypeScriptCompile Include="VueApp\src\components\create-hero.component.ts" />
-    <TypeScriptCompile Include="VueApp\src\components\index.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\index.ts" />
-    <TypeScriptCompile Include="VueApp\src\services\hero.service.ts" />
-    <TypeScriptCompile Include="VueApp\src\components\list-heroes.component.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\base.ts" />
-    <TypeScriptCompile Include="VueApp\src\services\helpers.ts" />
-    <TypeScriptCompile Include="VueApp\src\services\index.ts" />
-    <TypeScriptCompile Include="VueApp\src\services\power.service.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\power.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\country.ts" />
-    <TypeScriptCompile Include="VueApp\src\models\hero.ts" />
-    <TypeScriptCompile Include="VueApp\src\services\country.service.ts" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <TypeScriptCompile Include="heroes-cli\src\components\create-hero.component.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\components\list-heroes.component.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\components\search-hero.component.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\main-router.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\main.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\services\country.service.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\services\hero.service.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\services\power.service.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\sfc.d.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\shared\base.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\shared\config.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\shared\country.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\shared\helpers.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\shared\hero.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\shared\power.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -376,7 +383,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>cd $(SolutionDir)/Heroes/VueApp &amp;&amp; npm run build</PreBuildEvent>
+    <PreBuildEvent>cd $(SolutionDir)/Heroes/heroes-cli &amp;&amp; npm run build</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>

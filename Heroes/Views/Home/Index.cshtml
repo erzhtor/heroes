@@ -3,30 +3,6 @@
 }
 
 <div id="app">
-    <br />
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <router-link tag="a" to="/list-heroes" class="navbar-brand">Heroes IMS</router-link>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <router-link tag="li" to="/list-heroes" active-class="active"><a>List of Heroes</a></router-link>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <router-view></router-view>
-    </div>
 </div>
 
-@Html.Partial("_CreateHeroTemplate")
-@Html.Partial("_ListHeroesTemplate")
-
-@Scripts.Render("~/VueApp/bundle.js")
+@Scripts.Render("~/heroes-cli/build.js")

@@ -1,4 +1,4 @@
-import { HeroService } from "./../../../VueApp/src/services/hero.service";
+import { HeroService } from "../services/hero.service";
 import { Inject } from "vue-property-decorator";
 import Vue from "vue";
 import Component from "vue-class-component";
