@@ -9,7 +9,7 @@ namespace Heroes.BusinessLogicLayer.Contracts
 {
     public interface IHeroService
     {
-        IEnumerable<HeroDTO> GetHero();
+        IEnumerable<HeroDTO> GetHeroes();
         HeroDTO GetHeroById(int id);
         bool HeroExists(int id);
         void UpdateHero(HeroDTO heroDto);

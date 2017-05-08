@@ -20,7 +20,7 @@ namespace Heroes.Controllers
         // GET: api/Heroes
         public IEnumerable<HeroDTO> GetHeroes()
         {
-            return heroService.GetHero();
+            return heroService.GetHeroes();
         }
 
         // GET: api/Heroes/5

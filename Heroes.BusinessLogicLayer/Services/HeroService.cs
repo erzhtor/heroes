@@ -41,9 +41,9 @@ namespace Heroes.BusinessLogicLayer.Services
             return heroDto;
         }
 
-        public IEnumerable<HeroDTO> GetHero()
+        public IEnumerable<HeroDTO> GetHeroes()
         {
-            return heroRepository.Get(null).ProjectTo<HeroDTO>();
+            return heroRepository.Get().ProjectTo<HeroDTO>();
         }
 
         public HeroDTO GetHeroById(int id)
