@@ -46,6 +46,7 @@
     <Compile Include="Contracts\ICountryService.cs" />
     <Compile Include="Contracts\IHeroService.cs" />
     <Compile Include="Contracts\IPowerService.cs" />
+    <Compile Include="Models\HeroFiler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\CountryService.cs" />

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Heroes.BusinessLogicLayer.Models;
 using Heroes.Data.Models;
+using System.Collections.Generic;
 
 namespace Heroes.BusinessLogicLayer.Contracts
 {
     public interface IHeroService
     {
-        IEnumerable<HeroDTO> GetHeroes();
+        IEnumerable<HeroDTO> GetHeroes(HeroFiler filter);
         HeroDTO GetHeroById(int id);
         bool HeroExists(int id);
         void UpdateHero(HeroDTO heroDto);

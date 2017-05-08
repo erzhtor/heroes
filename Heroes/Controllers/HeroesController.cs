@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Heroes.BusinessLogicLayer.Contracts;
+using Heroes.BusinessLogicLayer.Models;
+using Heroes.Data.Models;
 using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Heroes.Data.Models;
-using Heroes.BusinessLogicLayer.Contracts;
 
 namespace Heroes.Controllers
 {
@@ -18,9 +18,9 @@ namespace Heroes.Controllers
         }
 
         // GET: api/Heroes
-        public IEnumerable<HeroDTO> GetHeroes()
+        public IEnumerable<HeroDTO> GetHeroes([FromUri]HeroFiler filter)
         {
-            return heroService.GetHeroes();
+            return heroService.GetHeroes(filter);
         }
 
         // GET: api/Heroes/5

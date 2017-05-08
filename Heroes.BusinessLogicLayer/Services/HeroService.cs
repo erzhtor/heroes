@@ -1,12 +1,12 @@
-﻿using Heroes.BusinessLogicLayer.Contracts;
-using System;
-using System.Collections.Generic;
-using Heroes.DataAccessLayer.UnitOfWork;
-using Heroes.DataAccessLayer.Models;
-using Heroes.DataAccessLayer.GenericRepository;
-using Heroes.Data.Models;
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Heroes.BusinessLogicLayer.Contracts;
+using Heroes.BusinessLogicLayer.Models;
+using Heroes.Data.Models;
+using Heroes.DataAccessLayer.GenericRepository;
+using Heroes.DataAccessLayer.Models;
+using Heroes.DataAccessLayer.UnitOfWork;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Heroes.BusinessLogicLayer.Services
@@ -41,9 +41,15 @@ namespace Heroes.BusinessLogicLayer.Services
             return heroDto;
         }
 
-        public IEnumerable<HeroDTO> GetHeroes()
+        public IEnumerable<HeroDTO> GetHeroes(HeroFiler heroFilter = null)
         {
-            return heroRepository.Get().ProjectTo<HeroDTO>();
+            var filter = heroFilter ?? new HeroFiler();
+            return heroRepository.Get(x =>
+                (filter.NickName == null || x.NickName.Contains(filter.NickName))
+                && (!filter.CountryID.Any() || filter.CountryID.Contains(x.CountryID))
+                && (!filter.PowerID.Any() || x.Powers.Any(p => filter.PowerID.Contains(p.ID)))
+                && (!filter.IsMale.HasValue || x.IsMale == filter.IsMale.Value))
+                .ProjectTo<HeroDTO>();
         }
 
         public HeroDTO GetHeroById(int id)
