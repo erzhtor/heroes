@@ -17,20 +17,20 @@
         <div class="checkbox">
             <label><input type="checkbox" v-model="hero.IsMale"> IsMale</label>
         </div>
-        <!--<div class="form-group">
+        <div class="form-group" v-if="powers">
             <select v-model="hero.PowerIDs" multiple class="form-control">
                     <option v-for="power in powers" v-bind:value="power.ID">
                         {{ power.Name }}
                     </option>
                 </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" v-if="countries">
             <div v-for="country in countries">
                 <input type="radio" v-bind:value="country.ID" v-model="hero.CountryID">
                 <label>{{country.Name}}</label>
                 <br>
             </div>
-        </div>-->
+        </div>
         <button type="button" @click="submitHero" class="btn btn-success btn-sm">Submit</button>
     </form>
 </div>

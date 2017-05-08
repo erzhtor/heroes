@@ -1,5 +1,33 @@
-  <div>
+<div>
     <router-link tag="a" to="/create-hero">Create New Hero</router-link>
     <search-heroes></search-heroes>
-    <p>list of heroes would be here</p>
-  </div>
+    <div>
+        <h2>List Of Heroes</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NickName</th>
+                    <th>Country</th>
+                    <th>Gender</th>
+                    <th>DateOfBirth</th>
+                    <th>Powers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-if="heroes && countries && powers" v-for="hero in heroes">
+                    <td>{{hero.ID}}</td>
+                    <td>{{hero.NickName}}</td>
+                    <td>{{hero.CountryID | countryByID(countries)}}</td>
+                    <td>{{hero.IsMale | genderToStr}}</td>
+                    <td>{{hero.DateOfBirth}}</td>
+                    <td>
+                        <span v-for="powerID in hero.PowerIDs" class="badge">
+                        {{powerID | powerByID(powers)}} 
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

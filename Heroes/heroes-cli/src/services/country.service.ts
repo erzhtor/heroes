@@ -1,16 +1,12 @@
+import { Country } from "../shared/country";
+import $ from "jquery";
+import { httpRequest } from "../shared/helpers";
+
 export class CountryService {
-
-    private static _instance: CountryService;
-
-    private constructor() {
+    constructor(public apiUrl: string) {
     }
 
-    static createInstance(): void {
-        CountryService.getInstance();
+    loadCountries(): Promise<Country[]> {
+        return httpRequest<Country[]>(this.apiUrl);
     }
-
-    static getInstance(): CountryService {
-        return this._instance || (this._instance = new this());
-    }
-
 }
