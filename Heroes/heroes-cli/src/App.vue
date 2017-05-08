@@ -31,17 +31,5 @@ export default class App extends Vue {
     }
 
     mounted(): void { }
-
-    // submitHero(hero: Hero): void {
-    //   this.heroService.postHero(hero)
-    //     .then((hero: Hero) => {
-    //       this.heroes.unshift(hero);
-    //       // router.push({ path: "/list-heroes" });
-    //       alert("successfully created");
-    //     })
-    //     .catch((err) => {
-    //       alert(err);
-    //     });
-    // }
 }
 </script>

@@ -1,3 +1,4 @@
+import Router from "vue-router";
 import { PowerService } from "../services/power.service";
 import { Country } from "../shared/country";
 import { Inject } from "vue-property-decorator";
@@ -7,6 +8,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import { Power } from "../shared/power";
 import { CountryService } from "../services/country.service";
+import { HeroService } from "../services/hero.service";
 
 @Component({
     template: require("./create-hero.component.html")
@@ -17,7 +19,8 @@ export class CreateHeroComponent extends Vue {
     }
     @Inject() powerService: PowerService;
     @Inject() countryService: CountryService;
-
+    @Inject() heroService: HeroService;
+    @Inject() router: Router;
     private hero: Hero = new Hero("", 0, true, "", []);
 
     countries: Country[] = null;
@@ -31,7 +34,7 @@ export class CreateHeroComponent extends Vue {
             .catch(err => {
                 alert(err);
             });
-        this.countryService.loadCountries()
+        this.countryService.fetchCountries()
             .then((result) => {
                 this.countries = result;
             })
@@ -39,7 +42,15 @@ export class CreateHeroComponent extends Vue {
                 alert(err);
             });
     }
-    submitHero(): void {
-        // test
+
+    submitHero(hero: Hero): void {
+        this.heroService.postHero(hero)
+            .then((hero: Hero) => {
+                this.router.push({ path: "/" });
+                alert("successfully created new hero");
+            })
+            .catch((err) => {
+                alert(err);
+            });
     }
 }

@@ -13,6 +13,9 @@ Vue.component("search-heroes", SearchHeroesComponent);
 new Vue({
     el: "#app",
     router,
+    provide: {
+        router: router
+    },
     template: "<App/>",
     components: { App, SearchHeroesComponent },
 });

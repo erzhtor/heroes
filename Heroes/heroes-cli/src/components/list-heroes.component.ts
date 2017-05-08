@@ -61,7 +61,7 @@ export class ListHeroesComponent extends Vue {
             });
     }
     loadCountries(): void {
-        this.countryService.loadCountries()
+        this.countryService.fetchCountries()
             .then((result) => {
                 this.countries = result;
             })

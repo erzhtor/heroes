@@ -6,7 +6,7 @@ export class CountryService {
     constructor(public apiUrl: string) {
     }
 
-    loadCountries(): Promise<Country[]> {
+    fetchCountries(): Promise<Country[]> {
         return httpRequest<Country[]>(this.apiUrl);
     }
 }
