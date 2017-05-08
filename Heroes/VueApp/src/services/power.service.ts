@@ -1,6 +1,6 @@
-﻿import { Power } from '../models/power'
-import $ from 'jquery'
-import { httpRequest } from './helpers'
+﻿import { Power } from "../models/power";
+import $ from "jquery";
+import { httpRequest } from "./helpers";
 
 export class PowerService {
     constructor(public apiUrl: string) {

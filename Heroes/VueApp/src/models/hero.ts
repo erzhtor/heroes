@@ -1,4 +1,4 @@
-﻿import Base from './base'
+﻿import Base from "./base";
 
 export class Hero extends Base {
     constructor(
@@ -7,6 +7,6 @@ export class Hero extends Base {
         public IsMale: boolean,
         public DateOfBirth: string,
         public PowerIDs: number[]) {
-        super()
+        super();
     }
 }

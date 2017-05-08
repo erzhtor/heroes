@@ -1,6 +1,6 @@
-﻿import { Hero } from '../models/hero'
-import $ from 'jquery'
-import { httpRequest } from './helpers'
+﻿import { Hero } from "../models/hero";
+import $ from "jquery";
+import { httpRequest } from "./helpers";
 
 
 export class HeroService {
@@ -8,10 +8,10 @@ export class HeroService {
     }
 
     public fetchHeroes(): Promise<Hero[]> {
-        return httpRequest<Hero[]>(this.apiUrl)
+        return httpRequest<Hero[]>(this.apiUrl);
     }
 
     public postHero(hero: Hero): Promise<Hero> {
-        return httpRequest<Hero>(this.apiUrl, 'POST', hero)
+        return httpRequest<Hero>(this.apiUrl, "POST", hero);
     }
 }

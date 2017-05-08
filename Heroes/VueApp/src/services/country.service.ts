@@ -1,6 +1,6 @@
-﻿import { Country } from '../models/country'
-import $ from 'jquery'
-import { httpRequest } from './helpers'
+﻿import { Country } from "../models/country";
+import $ from "jquery";
+import { httpRequest } from "./helpers";
 
 export class CountryService {
     constructor(public apiUrl: string) {
