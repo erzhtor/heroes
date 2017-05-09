@@ -1,6 +1,25 @@
 <template>
     <div id="app">
-        <router-view></router-view>
+        <div>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Heroes IMS</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <router-link tag="li" to="/" active-class="active" exact>
+                            <a>Home</a>
+                        </router-link>
+                        <router-link tag="li" to="/create-hero" active-class="active">
+                            <a>Create New Hero</a>
+                        </router-link>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container">
+                <router-view></router-view>
+            </div>
+        </div>
     </div>
 </template>
 
