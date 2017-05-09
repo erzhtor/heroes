@@ -27,7 +27,8 @@
             );
 
             // Seed Powers
-            var fast = new Power { Name = "Very Fast", CreatedAt = DateTime.Now };
+            var fast = new Power { Name = "Fast", CreatedAt = DateTime.Now };
+            var veryFast = new Power { Name = "Very Fast", CreatedAt = DateTime.Now };
             var strong = new Power { Name = "Strong", CreatedAt = DateTime.Now };
             var smart = new Power { Name = "Really Smart", CreatedAt = DateTime.Now };
             var canFly = new Power { Name = "Can Fly", CreatedAt = DateTime.Now };
@@ -35,7 +36,7 @@
             var lazy = new Power { Name = "Incredibly Lazy", CreatedAt = DateTime.Now };
             var unknown = new Power { Name = "Unknown", CreatedAt = DateTime.Now };
             context.Powers.AddOrUpdate(x => x.Name,
-                fast, strong, smart, canFly, canTeleport, lazy, unknown
+                veryFast, strong, smart, canFly, canTeleport, lazy, unknown
             );
 
             //Seed Heroes
@@ -44,7 +45,7 @@
                 {
                     Country = kyrgyzstan,
                     CreatedAt = DateTime.Now,
-                    DateOfBirth = new DateTime(1955, 1, 1),
+                    DateOfBirth = new DateTime(1935, 1, 1),
                     NickName = "Kozhomkul",
                     IsMale = true,
                     Powers =
@@ -61,7 +62,7 @@
                     IsMale = true,
                     Powers =
                         {
-                            fast
+                            veryFast
                         }
                 },
                 new Hero
@@ -73,7 +74,43 @@
                     IsMale = false,
                     Powers =
                         {
-                            strong, canFly, fast
+                            strong, canFly, veryFast
+                        }
+                },
+                new Hero
+                {
+                    Country = usa,
+                    CreatedAt = DateTime.Now,
+                    DateOfBirth = new DateTime(1975, 1, 5),
+                    NickName = "Catwoman",
+                    IsMale = false,
+                    Powers =
+                        {
+                            fast, strong
+                        }
+                },
+                new Hero
+                {
+                    Country = usa,
+                    CreatedAt = DateTime.Now,
+                    DateOfBirth = new DateTime(1985, 2, 1),
+                    NickName = "Flash",
+                    IsMale = true,
+                    Powers =
+                        {
+                            veryFast
+                        }
+                },
+                new Hero
+                {
+                    Country = russia,
+                    CreatedAt = DateTime.Now,
+                    DateOfBirth = new DateTime(1925, 2, 1),
+                    NickName = "Khan",
+                    IsMale = true,
+                    Powers =
+                        {
+                            veryFast
                         }
                 }
             );

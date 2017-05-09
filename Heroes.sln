@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes.DataAccessLayer", "H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes.Data", "Heroes.Data\Heroes.Data.csproj", "{30D1DF4D-6FB9-486D-807C-E6F7ED5AF614}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes.BusinessLogicLayer", "Heroes.BusinessLogicLayer\Heroes.BusinessLogicLayer.csproj", "{ACDA4F01-B758-4A3F-9463-310785B54792}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7869807B-081E-46BD-B073-B9D67B5109BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroes.BusinessLogicLayer.Tests", "Heroes.BusinessLogicLayer.Tests\Heroes.BusinessLogicLayer.Tests.csproj", "{5F590EBE-68ED-4874-8C95-7450638F9C84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +39,19 @@ Global
 		{30D1DF4D-6FB9-486D-807C-E6F7ED5AF614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30D1DF4D-6FB9-486D-807C-E6F7ED5AF614}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30D1DF4D-6FB9-486D-807C-E6F7ED5AF614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACDA4F01-B758-4A3F-9463-310785B54792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACDA4F01-B758-4A3F-9463-310785B54792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACDA4F01-B758-4A3F-9463-310785B54792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACDA4F01-B758-4A3F-9463-310785B54792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F590EBE-68ED-4874-8C95-7450638F9C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F590EBE-68ED-4874-8C95-7450638F9C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F590EBE-68ED-4874-8C95-7450638F9C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F590EBE-68ED-4874-8C95-7450638F9C84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F590EBE-68ED-4874-8C95-7450638F9C84} = {7869807B-081E-46BD-B073-B9D67B5109BD}
 	EndGlobalSection
 EndGlobal

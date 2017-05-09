@@ -1,0 +1,31 @@
+﻿<form @submit.prevent="search" class="form-inline">
+    <div class="form-group">
+        <label>NickName</label>
+        <input v-model="filterHero.Nickname" placeholder="search by nickname" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Gender:</label>
+        <select v-model="filterHero.IsMale" class="form-control">
+            <option value="false">Female</option>
+            <option value="true">Male</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Power:</label>
+        <select v-model="filterHero.PowerID" class="form-control">
+            <option v-for="power in powers" v-bind:value="power.ID">
+                {{ power.Name }}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Country</label>
+        <select v-model="filterHero.CountryID" class="form-control">
+            <option v-for="country in countries" v-bind:value="country.ID">
+                {{ country.Name }}
+            </option>
+        </select>
+    </div>
+    <button @submut.prevent="search" class="btn btn-primary">Search</button>
+    <button @click="clear" class="btn btn-default">Clear Filter</button>
+</form>
