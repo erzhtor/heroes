@@ -1,8 +1,8 @@
 <div>
-    <router-link tag="a" to="/create-hero">Create New Hero</router-link>
-    <search-heroes></search-heroes>
+    <search-heroes :countries="countries" :powers="powers" @filter-heroes="loadHeroes($event)"></search-heroes>
     <div>
         <h2>List Of Heroes</h2>
+        <router-link tag="a" to="/create-hero" class="btn btn-sm btn-success">Create New Hero</router-link>
         <table class="table table-striped">
             <thead>
                 <tr>

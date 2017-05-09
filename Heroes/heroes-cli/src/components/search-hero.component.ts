@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Component from "vue-class-component";
-import { Inject, Provide, Watch } from "vue-property-decorator";
+import { Inject, Provide, Watch, Prop } from "vue-property-decorator";
 import { FilterHero } from "../shared/filter-hero";
 import { PowerService } from "../services/power.service";
 import { CountryService } from "../services/country.service";
@@ -20,34 +20,18 @@ export class SearchHeroesComponent extends Vue {
     }
 
     filterHero: FilterHero = new FilterHero();
-    countries: Country[] = null;
-    powers: Power[] = null;
 
-    mounted(): void {
-        this.loadCountries();
-        this.loadPowers();
-    }
+    @Prop() countries: Country[];
+    @Prop() powers: Power[];
 
-    loadCountries(): void {
-        this.countryService.fetchCountries()
-            .then((result) => {
-                this.countries = result;
-            })
-            .catch(err => {
-                alert(err);
-            });
-    }
-    loadPowers(): void {
-        this.powerService.fetchPowers()
-            .then((result) => {
-                this.powers = result;
-            })
-            .catch(err => {
-                alert(err);
-            });
-    }
+    mounted(): void { }
 
     search(): void {
-        console.log("search");
+        this.$emit("filter-heroes", this.filterHero);
+    }
+
+    clear(): void {
+        this.filterHero = new FilterHero();
+        this.$emit("filter-heroes", this.filterHero);
     }
 }

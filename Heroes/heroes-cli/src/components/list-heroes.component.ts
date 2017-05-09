@@ -1,3 +1,4 @@
+import { FilterHero } from './../shared/filter-hero';
 import { HeroService } from "../services/hero.service";
 import { Inject } from "vue-property-decorator";
 import Vue from "vue";
@@ -46,13 +47,15 @@ export class ListHeroesComponent extends Vue {
     powers: Power[] = null;
 
     mounted(): void {
-        this.loadHeroes();
+        let filter: FilterHero = new FilterHero();
+        filter.IsMale = true;
+        this.loadHeroes(filter);
         this.loadCountries();
         this.loadPowers();
     }
 
-    loadHeroes(): void {
-        this.heroService.fetchHeroes()
+    loadHeroes(filter: FilterHero = null): void {
+        this.heroService.fetchHeroes(filter)
             .then((heroes) => {
                 this.heroes = heroes;
             })

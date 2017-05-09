@@ -349,6 +349,7 @@
     <TypeScriptCompile Include="heroes-cli\src\shared\base.ts" />
     <TypeScriptCompile Include="heroes-cli\src\shared\config.ts" />
     <TypeScriptCompile Include="heroes-cli\src\shared\country.ts" />
+    <TypeScriptCompile Include="heroes-cli\src\shared\filter-hero.ts" />
     <TypeScriptCompile Include="heroes-cli\src\shared\helpers.ts" />
     <TypeScriptCompile Include="heroes-cli\src\shared\hero.ts" />
     <TypeScriptCompile Include="heroes-cli\src\shared\power.ts" />
