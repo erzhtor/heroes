@@ -49,6 +49,7 @@ namespace Heroes.BusinessLogicLayer.Services
                 && (!filter.CountryID.Any() || filter.CountryID.Contains(x.CountryID))
                 && (!filter.PowerID.Any() || x.Powers.Any(p => filter.PowerID.Contains(p.ID)))
                 && (!filter.IsMale.HasValue || x.IsMale == filter.IsMale.Value))
+                .OrderByDescending(x => x.CreatedAt)
                 .ProjectTo<HeroDTO>();
         }
 

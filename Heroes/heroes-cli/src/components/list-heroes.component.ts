@@ -47,9 +47,7 @@ export class ListHeroesComponent extends Vue {
     powers: Power[] = null;
 
     mounted(): void {
-        let filter: FilterHero = new FilterHero();
-        filter.IsMale = true;
-        this.loadHeroes(filter);
+        this.loadHeroes();
         this.loadCountries();
         this.loadPowers();
     }

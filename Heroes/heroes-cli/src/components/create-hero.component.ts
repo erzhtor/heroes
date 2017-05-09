@@ -43,8 +43,8 @@ export class CreateHeroComponent extends Vue {
             });
     }
 
-    submitHero(hero: Hero): void {
-        this.heroService.postHero(hero)
+    submitHero(): void {
+        this.heroService.postHero(this.hero)
             .then((hero: Hero) => {
                 this.router.push({ path: "/" });
                 alert("successfully created new hero");
