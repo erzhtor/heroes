@@ -6,6 +6,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./main-router";
 
+import "./scss/main.scss";
+
 Vue.config.productionTip = false;
 Vue.component("search-heroes", SearchHeroesComponent);
 

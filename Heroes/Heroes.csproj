@@ -240,6 +240,11 @@
     <Content Include="heroes-cli\src\components\create-hero.component.html" />
     <Content Include="heroes-cli\src\components\list-heroes.component.html" />
     <Content Include="heroes-cli\src\components\search-hero.component.html" />
+    <Content Include="heroes-cli\static\css\bootstrap-3.3.7.min.css" />
+    <Content Include="heroes-cli\static\js\bootstrap-3.3.7.min.js" />
+    <None Include="heroes-cli\static\js\jquery-1.10.2.intellisense.js" />
+    <Content Include="heroes-cli\static\js\jquery-1.10.2.js" />
+    <Content Include="heroes-cli\static\js\jquery-1.10.2.min.js" />
     <Content Include="heroes-cli\webpack.config.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -270,6 +275,8 @@
     <Content Include="heroes-cli\.editorconfig" />
     <Content Include="heroes-cli\package.json" />
     <Content Include="heroes-cli\tsconfig.json" />
+    <Content Include="heroes-cli\src\scss\main.scss" />
+    <Content Include="heroes-cli\static\js\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
