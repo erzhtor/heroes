@@ -1,15 +1,15 @@
 # Heroes IMS:
-*Heroes IMS* (Information management system)
-Example project's purpose is to store basic information about heroes (Nickname, gender, country, powers).
-> Project can be used as starter for **ASP.NET Web Api2** with **Vue.js**
+*Heroes IMS* (Information management system)  
+Example project to store basic information about heroes (nickname, gender, country, powers).
+> Project can be used as a starter for **ASP.NET Web Api2** with **Vue.js** apps.
 
-## Project Techincal Overview
-The main project consists of several parts: 
+## Get Started
+The project consists of several parts: 
 1. **Heroes.Data:** holds Data Transfer Objects and their mappings
 2. **Heroes.DataAccessLayer:** contains entity objects, entity context, migrations, generic repository model and unit of work
 3. **Heroes.BusinessLogicLayer:** contains services and their abstractions (+ Unit Tests)
-4. **Heroes:** main **ASP.NET Web Api** (and also MVC) (REST API)
-5. **Heroes/heroes-cli:** **Vue.js** frontend part, built using **Typescript**
+4. **Heroes:** main **ASP.NET Web Api\MVC** REST API
+5. **Heroes/heroes-cli:** **Vue.js\Typescript** frontend part
 
 ## Built using
 - Backend
